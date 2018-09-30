@@ -1,6 +1,10 @@
 from modeller import *
 import glob,os
 import wget
+
+# Gerenating Logs
+log.verbose()
+env = environ()
 # Using Glob Module. Now we can find the files having specific format i.e. .py
 list1 =  os.listdir(os.getcwd()+"/alignments")
 
@@ -22,7 +26,7 @@ for i in list1:
 	print("#  [4] Modelssingle.py")
 	print("#  [5] Evaluate_model.py")
 	print("###################################################################################################")
-	print("#																Build_Profile.py")
+	print("#													Build_Profile.py")
 	print("###################################################################################################")
 
 
@@ -45,20 +49,20 @@ for i in list1:
 	#-- Write the sequence database in binary form
 	sdb.write(seq_database_file='pdb_95.bin', seq_database_format='BINARY', chains_list='ALL')
 	print("###################################################################################################")
-	print("#													Build_Profile.py > Sequence,write()")
+	print("#												Build_Profile.py > Sequence,write()")
 	print("###################################################################################################")
 	
 	#-- Now, read in the binary database
 	sdb.read(seq_database_file='pdb_95.bin', seq_database_format='BINARY', chains_list='ALL')
 	print("###################################################################################################")
-	print("#										   			Build_Profile.py > Sequence,read_Binary()")
+	print("#										   		Build_Profile.py > Sequence,read_Binary()")
 	print("###################################################################################################")
 	
 	#-- Read in the target sequence/alignment
 	aln = alignment(env)
 	aln.append(file=os.getcwd()+"/alignments/"+selected_PDB+'.ali', alignment_format='PIR', align_codes='ALL')
 	print("###################################################################################################")
-	print("#							   				Build_Profile.py > Appending, writing files in .ali()")
+	print("#							   			Build_Profile.py > Appending, writing files in .ali()")
 	print("###################################################################################################")
 	
 	#-- Convert the input sequence/alignment into
@@ -99,8 +103,7 @@ for i in list1:
 	print("###################################################################################################")
 	print("#													 Compare.py")
 	print("###################################################################################################")
-	from modeller import *
-	from array import array
+	
 	env = environ()
 	aln = alignment(env)
 	# This script will find the best protein based on the below crieterias:
@@ -179,7 +182,7 @@ for i in list1:
 			intvar3.append(tempList)
 			
 	# Printing the List of List[3 crietereas]
-	print("\n\n\n This is the intvar3: ")
+	print("\n\n\n This is the Profile File: ")
 	print(intvar3)
 	print("\n\n\n")
 	maxE = 0
@@ -204,7 +207,7 @@ for i in list1:
 	
 	# Downloading selected PDB file from Wget, Runtime
 	url = "https://files.rcsb.org/download/"+pdb+".pdb"
-	file1 = wget.download(url)
+	file1 = wget.download(url, os.getcwd()+"/GST/PDB/")
 
 	# [B] Actual Compare.py starts here
 	#     All codes above were for the preparing the data only
@@ -225,16 +228,16 @@ for i in list1:
 	print("###################################################################################################")
 	# Align2D starts from here
 
-	from modeller import *
+	
 	#import Compare as tryPy1
 	env = environ()
 	aln = alignment(env)
 	mdl = model(env, file=pdb, model_segment=('FIRST:A','LAST:A'))
 	aln.append_model(mdl, align_codes=pdb+chain, atom_files=pdb+'.pdb')
-	aln.append(file=selected_PDB+'.ali', align_codes=selected_PDB)
+	aln.append(file=os.getcwd()+"/alignments/"+selected_PDB+'.ali', align_codes=selected_PDB)
 	aln.align2d()
-	aln.write(file=os.getcwd()+"GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali', alignment_format='PIR')
-	aln.write(file=os.getcwd()+"GST/PAP/"+selected_PDB+'-'+pdb+chain+'.pap', alignment_format='PAP')
+	aln.write(file=os.getcwd()+"/GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali', alignment_format='PIR')
+	aln.write(file=os.getcwd()+"/GST/PAP/"+selected_PDB+'-'+pdb+chain+'.pap', alignment_format='PAP')
 
 
 	###################################################################################################
@@ -251,7 +254,7 @@ for i in list1:
 
 	env = environ()
 
-	a = automodel(env, alnfile=selected_PDB+'-'+pdb+chain+'.ali',
+	a = automodel(env, alnfile=os.getcwd()+"GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali',
 	              knowns=pdb+chain, sequence=selected_PDB,
 	              assess_methods=(assess.DOPE,
 	                              #soap_protein_od.Scorer(),
