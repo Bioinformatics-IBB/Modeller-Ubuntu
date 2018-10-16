@@ -30,8 +30,8 @@ for i in list1:
 	print("###################################################################################################")
 
 
-	log.verbose()
-	env = environ()
+	#log.verbose()
+	#env = environ()
 
 	#-- Name of Selected ALI file from /alignments folder
 	print("\n**** Name of  \"Selected_PDB\"    is = "+selected_PDB)
@@ -104,7 +104,7 @@ for i in list1:
 	print("#													 Compare.py")
 	print("###################################################################################################")
 	
-	env = environ()
+	#env = environ()
 	aln = alignment(env)
 	# This script will find the best protein based on the below crieterias:
 	# [1] LOWEST E-VALUE
@@ -131,12 +131,12 @@ for i in list1:
 	# Going through the file 1 line at a time.
 	for i in file1:		
 		count = count + 1
-		print("&&&& AM I in For-LOOP ? &&&&")
+		#print("&&&& AM I in For-LOOP ? &&&&")
 		if(count > 7):
-			print("&&&& AM I in IF-Condition ? &&&&")
+			#print("&&&& AM I in IF-Condition ? &&&&")
 			for j in (i[99:107]):
 				if(j != " "):
-					print("&&&& AM J in IF-Condition ? Fetching Evalue")
+					#print("&&&& AM J in IF-Condition ? Fetching Evalue")
 					# fetching the Evalue(string value) of each protein 				
 					intvar = intvar+j		
 					
@@ -146,7 +146,7 @@ for i in list1:
 			
 			for j in (i[93:95]):
 				if(j != " " and j != "."):
-					print("&&&& AM J in IF-Condition ? Removing anamoly in data")
+					#print("&&&& AM J in IF-Condition ? Removing anamoly in data")
 					# Removing any anamoly in the data	
 					intvar = intvar+j		
 
@@ -157,7 +157,7 @@ for i in list1:
 			# fetching the Coverage(percentage value) of each protein 
 			for j in (i[87:93]):
 				if(j != " " ):
-					print("&&&& AM J in IF-Condition ? Fetching Coverage")		
+					#print("&&&& AM J in IF-Condition ? Fetching Coverage")		
 					intvar = intvar+j		
 
 			# Coverting a string Sequence value in to Floating point Sequence value
@@ -167,7 +167,7 @@ for i in list1:
 			# fetching the PDB name (srting value) of each protein 
 			for j in (i[6:12]):
 				if(j != " " ):
-					print("&&&& AM J in IF-Condition ? Fetching PDB name")
+					#print("&&&& AM J in IF-Condition ? Fetching PDB name")
 					intvar = intvar+j		
 
 			# Storing the pdb name in to variable			
@@ -214,7 +214,7 @@ for i in list1:
 	#	  Now we have best (pdb, chain)
 	m = model(env, file=os.getcwd()+"/GST/PDB/"+pdb+".pdb", model_segment=('FIRST:'+chain, 'LAST:'+chain))
 	print("**** Model is Made")
-	aln.append_model(m, atom_files=pdb, align_codes=pdb+chain)
+	aln.append_model(m, atom_files=os.getcwd()+"/GST/PDB/"+pdb,  align_codes=pdb+chain)
 	aln.malign()
 	aln.malign3d()
 	aln.compare_structures()
@@ -224,17 +224,18 @@ for i in list1:
 	###################################################################################################
 	#										Align2D.py
 	print("###################################################################################################")
-	print("#																Align2D.py")
+	print("#														Align2D.py")
 	print("###################################################################################################")
 	# Align2D starts from here
 
 	
 	#import Compare as tryPy1
-	env = environ()
+	#env = environ()
 	aln = alignment(env)
-	mdl = model(env, file=pdb, model_segment=('FIRST:A','LAST:A'))
-	aln.append_model(mdl, align_codes=pdb+chain, atom_files=pdb+'.pdb')
-	aln.append(file=os.getcwd()+"/alignments/"+selected_PDB+'.ali', align_codes=selected_PDB)
+	#mdl = model(env, file=pdb, model_segment=('FIRST:A','LAST:A'))
+	mdl = model(env, file=os.getcwd()+"/GST/PDB/"+pdb, model_segment=('FIRST:A','LAST:A'))
+	aln.append_model(mdl, align_codes=pdb+chain, atom_files=os.getcwd()+"/GST/PDB/"+pdb+'.pdb')	
+	aln.append(file=os.getcwd()+"/GST/ALI/"+selected_PDB+'_build_profile.ali', align_codes=selected_PDB)
 	aln.align2d()
 	aln.write(file=os.getcwd()+"/GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali', alignment_format='PIR')
 	aln.write(file=os.getcwd()+"/GST/PAP/"+selected_PDB+'-'+pdb+chain+'.pap', alignment_format='PAP')
@@ -252,7 +253,7 @@ for i in list1:
 	#import Compare
 	#from modeller import soap_protein_od
 
-	env = environ()
+	#env = environ()
 
 	a = automodel(env, alnfile=os.getcwd()+"GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali',
 	              knowns=pdb+chain, sequence=selected_PDB,
@@ -273,8 +274,8 @@ for i in list1:
 	from modeller import *
 	from modeller.scripts import complete_pdb
 
-	log.verbose()    # request verbose output
-	env = environ()
+	#log.verbose()    # request verbose output
+	#env = environ()
 	env.libs.topology.read(file='$(LIB)/top_heav.lib') # read topology
 	env.libs.parameters.read(file='$(LIB)/par.lib') # read parameters
 
