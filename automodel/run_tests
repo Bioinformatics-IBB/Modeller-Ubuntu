@@ -1,0 +1,64 @@
+#!/bin/sh
+# Run scripts with Python (and modpy.sh if needed) if possible, rather
+# than the modXXX script (which only works correctly if Python 2.3 is installed)
+modpy="../../bin/modpy.sh"
+# If modpy.sh doesn't exist, assume we have Python set up correctly already
+# (e.g. Mac or RPM install, or PYTHONPATH and LD_LIBRARY_PATH set):
+if test "${PYTHON}x" != "x"; then
+  pyint="${PYTHON}"
+else
+  pyint="python"
+fi
+if test ! -f ${modpy}; then
+  modpy="${pyint}"
+else
+  modpy="${modpy} ${pyint}"
+fi
+# Only use Modeller through Python if 1) an import succeeds, 2) the 'modeller'
+# module imported is really Modeller (not a spurious modeller.py in the path
+# somewhere) and 3) the version matches that these examples were built with
+run_version=`${modpy} - 2>/dev/null <<END
+import sys
+from modeller import *
+v = info.version_info
+if isinstance(v, tuple):
+    v = ".".join([str(i) for i in v])
+sys.stdout.write(v + '\n')
+END
+`
+build_version="9.19"
+
+run_script() {
+  pyscript="$1.py"
+  if test "${run_version}" = "${build_version}"; then
+    log="$1.log"
+    cmd="${modpy} ${pyscript} > ${log}"
+  else
+    cmd="mod9.19 ${pyscript}"
+  fi
+  echo "$cmd"
+  eval "$cmd"
+}
+
+run_script model-default
+run_script model-loop
+run_script model-fast
+run_script model-segment
+run_script model-default-allh
+run_script model-full
+run_script loop
+run_script model-myini
+run_script model-myrsr
+run_script model-addrsr
+run_script model-loop-tiny
+run_script model-outputs
+run_script model-parallel
+run_script library_restraints
+run_script model-loop-define
+run_script model-disulfide
+run_script model-ligand
+run_script model-multichain
+run_script model-multichain-sym
+run_script model-multiple
+run_script model-changeopt
+run_script model-cif

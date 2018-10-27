@@ -1,0 +1,15 @@
+>P1;1fdx
+sequence::::::ferredoxin:Peptococcus aerogenes:-1.00:-1.00
+AYVINDSCIACGACKPECPVNIIQGSIYAIDADSCIDCGSCASVCPVGAPNPED*
+>P1;1fdn
+structureX:1fdn:FIRST:@:55:@:ferredoxin:Clostrodium acidiurici: 1.84:-1.0
+*
+>P1;5fd1
+structureX:5fd1:FIRST:@:60:@:ferredoxin:Azotobacter vinelandii: 1.90:0.192
+*
+>P1;1fxd
+structureX:1fxd:FIRST:@:58:@:ferredoxin:Desolfovibrio gigas: 1.70:-1.0
+*
+>P1;1iqz
+structureX:1iqz:FIRST:@:60:@:ferredoxin:Bacillus thermoproteolyticus: 2.30:-1.0
+*

@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -f 1fdx.* [15]*.pdb *.log *.mat *.seg.ali *.slave* 1hc9.*
