@@ -7,10 +7,18 @@ log.verbose()
 env = environ()
 # Using Glob Module. Now we can find the files having specific format i.e. .py
 list1 =  os.listdir(os.getcwd()+"/alignments")
-
+totalIteration = 0
 for i in list1:
 	selected_PDB = i[:-4]
-	
+	totalIteration = totalIteration+1
+	print("\n\n\n\n")
+	print("###################################################################################################")
+	print("**** Iteration = "+str(totalIteration))
+	#-- Name of Selected ALI file from /alignments folder
+	print("\n**** Name of  \"Selected_PDB\"    is = "+selected_PDB)
+	print("\n**** File name is = "+i)
+	print("")
+	print("###################################################################################################")
 	# This file have all the modeller python file, Which will run one by one.
 	# [1] Build_profile.py
 	# [2] Compare.py
@@ -26,84 +34,95 @@ for i in list1:
 	print("#  [4] Modelssingle.py")
 	print("#  [5] Evaluate_model.py")
 	print("###################################################################################################")
-	print("#													Build_Profile.py")
+	print("**** Build_Profile.py")
 	print("###################################################################################################")
 
 
 	#log.verbose()
 	#env = environ()
 
-	#-- Name of Selected ALI file from /alignments folder
-	print("\n**** Name of  \"Selected_PDB\"    is = "+selected_PDB)
-	print("\n**** File name is = "+i)
-	print()
-
 	#-- Read in the sequence database
 	sdb = sequence_db(env)
 	sdb.read(seq_database_file='pdb_95.pir', seq_database_format='PIR',
 	         chains_list='ALL', minmax_db_seq_len=(30, 4000), clean_sequences=True)
+	print("")
 	print("###################################################################################################")
-	print("#												Build_Profile.py > Sequence,read()")
+	print("**** Build_Profile.py > Sequence,read()")
 	print("###################################################################################################")
-	
+	print("")
+
 	#-- Write the sequence database in binary form
 	sdb.write(seq_database_file='pdb_95.bin', seq_database_format='BINARY', chains_list='ALL')
+	print("")
 	print("###################################################################################################")
-	print("#												Build_Profile.py > Sequence,write()")
+	print("**** Build_Profile.py > Sequence,write()")
 	print("###################################################################################################")
-	
+	print("")
+
 	#-- Now, read in the binary database
 	sdb.read(seq_database_file='pdb_95.bin', seq_database_format='BINARY', chains_list='ALL')
 	print("###################################################################################################")
-	print("#										   		Build_Profile.py > Sequence,read_Binary()")
+	print("**** Build_Profile.py > Sequence,read_Binary()")
 	print("###################################################################################################")
 	
 	#-- Read in the target sequence/alignment
 	aln = alignment(env)
 	aln.append(file=os.getcwd()+"/alignments/"+selected_PDB+'.ali', alignment_format='PIR', align_codes='ALL')
+	print("")
 	print("###################################################################################################")
-	print("#							   			Build_Profile.py > Appending, writing files in .ali()")
+	print("**** Build_Profile.py > Appending, writing files in .ali()")
 	print("###################################################################################################")
-	
+	print("")
+
 	#-- Convert the input sequence/alignment into
 	#   profile format
 	prf = aln.to_profile()
+	print("")
 	print("###################################################################################################")
-	print("#										    Build_Profile.py > Alignment_To_Profile(converstion)")
+	print("**** Build_Profile.py > Alignment_To_Profile(converstion)")
 	print("###################################################################################################")
-	
+	print("")
+
 	#-- Scan sequence database to pick up homologous sequences
 	prf.build(sdb, matrix_offset=-450, rr_file='${LIB}/blosum62.sim.mat',
 	          gap_penalties_1d=(-500, -50), n_prof_iterations=1,
 	          check_profile=False, max_aln_evalue=0.01)
+	print("")
 	print("###################################################################################################")
-	print("#										    	  	 Build_Profile.py > Profile.Build()")
+	print("**** Build_Profile.py > Profile.Build()")
 	print("###################################################################################################")
 	
 	#-- Write out the profile in text format
 	prf.write(file=os.getcwd()+"/GST/PRF/"+selected_PDB+"_build_profile.prf", profile_format='TEXT')
 	print("###################################################################################################")
-	print("#								  					 Build_Profile.py > Writing, Profile in .prf")
+	print("**** Build_Profile.py > Writing, Profile in .prf")
 	print("###################################################################################################")
-	
+	print("")
+
 	#-- Convert the profile back to alignment format
 	aln = prf.to_alignment()
+	print("")
 	print("###################################################################################################")
-	print("#										   		     Build_Profile.py > Profile To Alignment")
+	print("**** Build_Profile.py > Profile To Alignment")
 	print("###################################################################################################")
-	
+	print("")
+
 	#-- Write out the alignment file
 	aln.write(file=os.getcwd()+"/GST/ALI/"+selected_PDB+"_build_profile.ali", alignment_format='PIR')
+	print("")
 	print("###################################################################################################")
-	print("#								   					 Build_Profile.py > Writing ALignment from Profile")
+	print("**** Build_Profile.py > Writing Allignment from Profile")
 	print("###################################################################################################")
+	print("")
 
 	###################################################################################################
 	#										Compare.py
+	print("")
 	print("###################################################################################################")
-	print("#													 Compare.py")
+	print("**** Compare.py")
 	print("###################################################################################################")
-	
+	print("")
+
 	#env = environ()
 	aln = alignment(env)
 	# This script will find the best protein based on the below crieterias:
@@ -182,9 +201,14 @@ for i in list1:
 			intvar3.append(tempList)
 			
 	# Printing the List of List[3 crietereas]
+	print("")
+	print("###################################################################################################")
 	print("\n\n\n This is the Profile File: ")
 	print(intvar3)
 	print("\n\n\n")
+	print("###################################################################################################")
+	print("")
+	
 	maxE = 0
 
 	# Now Getting the best protein based on the 3 critereas
@@ -194,15 +218,21 @@ for i in list1:
 			break
 
 	# Allocatin the values to the variables
+	print("")
+	print("###################################################################################################")
 	print("**** MaxE Name = "+str(maxE))
 	pdb = maxE
 	chain = 'A'
 
 	# Validatin of the PDB name, whether it is having an extra 'A' at the last of the PDB name or not
-	print("**** PDB Name = "+str(pdb))
+	print("**** PDB Name = "+str(pdb))	
 	if pdb[-1] == 'A':
 		pdb = pdb[:-1]
+	
 	print("**** PDb, Chains are: ",pdb,chain)
+	print("###################################################################################################")
+	print("")
+	
 
 	
 	# Downloading selected PDB file from Wget, Runtime
@@ -223,19 +253,20 @@ for i in list1:
 
 	###################################################################################################
 	#										Align2D.py
-	print("###################################################################################################")
-	print("#														Align2D.py")
-	print("###################################################################################################")
-	# Align2D starts from here
+	# print("###################################################################################################")
+	# print("#														Align2D.py")
+	# print("###################################################################################################")
+	# # Align2D starts from here
 
-	
+	print(selected_PDB)
+	print(pdb+chain)	
 	#import Compare as tryPy1
 	#env = environ()
 	aln = alignment(env)
 	#mdl = model(env, file=pdb, model_segment=('FIRST:A','LAST:A'))
 	mdl = model(env, file=os.getcwd()+"/GST/PDB/"+pdb, model_segment=('FIRST:A','LAST:A'))
 	aln.append_model(mdl, align_codes=pdb+chain, atom_files=os.getcwd()+"/GST/PDB/"+pdb+'.pdb')	
-	aln.append(file=os.getcwd()+"/GST/ALI/"+selected_PDB+'_build_profile.ali', align_codes=selected_PDB)
+	aln.append(file=os.getcwd()+"/alignments/"+selected_PDB+'.ali', align_codes=selected_PDB)
 	aln.align2d()
 	aln.write(file=os.getcwd()+"/GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali', alignment_format='PIR')
 	aln.write(file=os.getcwd()+"/GST/PAP/"+selected_PDB+'-'+pdb+chain+'.pap', alignment_format='PAP')
@@ -243,10 +274,11 @@ for i in list1:
 
 	###################################################################################################
 	#										Model-Single.py
+	print("")
 	print("###################################################################################################")
 	print("#																Model-Single.py")
 	print("###################################################################################################")
-
+	print("")
 
 	from modeller import *
 	from modeller.automodel import *
@@ -255,7 +287,7 @@ for i in list1:
 
 	#env = environ()
 
-	a = automodel(env, alnfile=os.getcwd()+"GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali',
+	a = automodel(env, alnfile=os.getcwd()+"/GST/ALI/"+selected_PDB+'-'+pdb+chain+'.ali',
 	              knowns=pdb+chain, sequence=selected_PDB,
 	              assess_methods=(assess.DOPE,
 	                              #soap_protein_od.Scorer(),
@@ -266,10 +298,11 @@ for i in list1:
 
 	###################################################################################################
 	#										Evaluate_Model.py
+	print("")
 	print("###################################################################################################")
 	print("#																Evaluate_Model.py")
 	print("###################################################################################################")
-
+	print("")
 
 	from modeller import *
 	from modeller.scripts import complete_pdb

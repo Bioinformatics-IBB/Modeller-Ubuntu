@@ -1,0 +1,44 @@
+ _aln.pos         10        20        30        40        50        60
+5a2gA     -AKQF--------LY---------------D-NL--------PVVETKAGKLRGYQWE---GTYI--F 
+B2ZDZ0    MSRTFALLINSVLLFAAYGQCHEGHGHHHHDQNVGHQHDRPSPKVTSASGVFLGSWMQTRRGRHFQGF 
+ _consrvd     *        *                * *         * *    *   *       *     *
+
+ _aln.p   70        80        90       100       110       120       130
+5a2gA     KGIRYARAN----RFQLPEEVEPWEGVKEAASYGFVCPMLTRDHPQGELLVPHRYWPQDEDCLSLNIW 
+B2ZDZ0    RGIRYAEAPVGDLRFQAPKPILQYSGEVDASKEGPACPQPT-N-P--N----Y-YNNVDEDCLRLNVY 
+ _consrvd  ***** *     *** *       *   *   *  **  *   *         *   ***** **
+
+ _aln.pos  140       150       160       170       180       190       200
+5a2gA     SQSLDRSAKKPVMFWIHGGAFSMGSSIEQKAYNGENMSRYGDVVVVTVNHRLNILGYLDLSPYGERYA 
+B2ZDZ0    THGSS-GELRPVVIFIHAGGFYAASGRSDIAGPDYFLDK--DIVLVTINYRLSSLGFLS-T--GDELA 
+ _consrvd           **   ** * *   *     *          * * ** * **  ** *     *   *
+
+ _aln.pos    210       220       230       240       250       260       270
+5a2gA     GSANAGQADLVAALKWVRDNIEAFGGDPDNVTIFGQSGGGMKVSGLMQTPEADGLFHRAMIMSG--VA 
+B2ZDZ0    -PGNNGYKDQVMAMRWVQRNIASFGGDPNLVTIAGYSAGSFSVMLHTVSPMSKGLFHRAISMSGSPIS 
+ _consrvd    * *  * * *  **  **  *****  *** * * *   *      *   ******  ***
+
+ _aln.pos      280       290       300       310       320       330       340
+5a2gA     GDVLPYSTGDSRPLIQAMLKELGLAEQEA--GRLETVPYYDLAAAYNRVSP-AIARAGGYIGCTPRP- 
+B2ZDZ0    QVVIPHDQR-QLAVRQAELLDCPTNSSRAIIDCLKTKPWGDIGNSLRGFFEFAYDPVLIWVPLVEKDC 
+ _consrvd   * *          ** *         *    * * *  *           *
+
+ _aln.pos        350       360       370       380       390       400
+5a2gA     -DDFYKGEGPAVGF-TDHAKTIPVMVGTVFGEFAMMPLP-FNKETISEA---ELDEILDKRF---QGH 
+B2ZDZ0    GQERFLVKQPLDSIRQREIHSVPYIISQTQDEFFWKALNILANQTLTDTMNNEWERIAPISFYLPAST 
+ _consrvd          *            *        **    *      *       *   *    *
+
+ _aln.p  410       420       430       440       450       460       470
+5a2gA     GKELKTVFAEAYP-GKSPVD-------LLTL--DTIFRGPTKEFVRSLAAAGG-SVYSYLFAL----- 
+B2ZDZ0    SRQASNKLKQAYLGGKKLVNDTASADGLGKLYNDAIIGFGVHRLVNLMSQYSSKPVYYYEFAYIGNHS 
+ _consrvd           **  **  *        *  *  * *        *          ** * **
+
+ _aln.pos  480       490       500       510       520       530       540
+5a2gA     --EFPYQNQKT-AWHCSDIPFIFHNTELVPVTNIPE-ISDKLEKQMFDAVIHFVETGDPNH------L 
+B2ZDZ0    HYEDPVTKKPTGAAHHDELIYLFSVNATFPVIEASDSLDSKMVDKMTSIWYNFLKNGDPNPRDNNPEL 
+ _consrvd   * *     * * *       *      **         *    *      *   ****       *
+
+ _aln.pos    550       560       570       580
+5a2gA     -GIPQWPVSTEDREATMIFDRVCTVRFN-FDDYLL---ELYKKAL 
+B2ZDZ0    SGLS-WPAMKPNDRKYLRIDKTFSVHENLFEDRFKIWEELYPITN 
+ _consrvd  *   **            *    *  * * *      ***
