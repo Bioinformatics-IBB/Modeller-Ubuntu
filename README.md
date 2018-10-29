@@ -1,37 +1,49 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Bioinformatics-IBB/Modeller/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+![](https://images.pexels.com/photos/340901/pexels-photo-340901.jpeg?auto=compress&cs=tinysrgb&h=350)
+# Welcome to the Project's wiki!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Here we are implementing Automation, clustering of codes, redefining functions of Modeller™(Salilab's) for Ubuntu.😊 
+***
+## **A project for our own understanding of Modeller™ as well as bioinformatics.**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**The scope of project is to Develop and maintain GST, CYP4, CYP6 based automation tools, So that it will be helpful in further different projects related to our core thesis. Hence following are the checkpoints based on their timeline:-**
+* Establishment of Environment.
+* Development of Automation scripts.
+* Alteration of predefined codes as per our project.
+* Providing User-friendliness.
+* Development of GUI tool.
+* Generate Ramchandran Plot and Dope score.
 
-```markdown
-Syntax highlighted code block
+whole tool is based on Python🐍 and Modeller™ scripts. Which includes PIR, FASTA, ALI files. Which have Genomic data. Modeller™ provides processing libraries. 
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+***
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+## Requirments
+**Follwing are the requirments of this project:- **
+* Python2.7
+* wget for Python
+### To install requirments run the following command:-
+` pip install -r requirements.txt ` 
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+***
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Bioinformatics-IBB/Modeller/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Install
+**To install this project you can drectly download this repo or you can use git clone, Here we go:-**
 
-### Support or Contact
+**[1] From Download Button: Click on the ` Clone or download ` and the  `Download Zip `. By this downloads should be started.**
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+**[2] From commands: ` git clone  https://github.com/Bioinformatics-IBB/Modeller/ ` . By this downloads should be started.**
+
+
+***
+
+## License
+**Bioinformatics-IBB/Modeller is licensed under the GNU General Public License v3.0
+Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. 
+[License](https://github.com/Bioinformatics-IBB/Modeller/blob/master/LICENSE)**
+
