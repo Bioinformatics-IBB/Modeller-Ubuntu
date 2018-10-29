@@ -48,4 +48,6 @@ Permissions of this strong copyleft license are conditioned on making available 
 [License](https://github.com/Bioinformatics-IBB/Modeller/blob/master/LICENSE)**
 
 
-Made with ❤ by priyank.namdev@gmail.com, mavish.ps8@gmail.com, neha.kane@gmail.com
+
+
+**Made with ❤ by [Priyank Namdev](priyank.namdev@gmail.com), [Shivam Namdev](mavish.ps8@gmail.com), [Neha Kane](neha.kane@gmail.com)**
